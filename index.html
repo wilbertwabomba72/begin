@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bingo 90 Number Generator</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #110a22;
+      --panel: rgba(255, 255, 255, 0.08);
+      --panel-strong: rgba(255, 255, 255, 0.13);
+      --text: #fff8ef;
+      --muted: #d9cdea;
+      --accent: #f28b2e;
+      --pink: #ff4fa3;
+      --blue: #37c8ff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 25% 12%, rgba(255, 79, 163, 0.24), transparent 30rem),
+        radial-gradient(circle at 78% 2%, rgba(55, 200, 255, 0.18), transparent 26rem),
+        linear-gradient(180deg, #090612 0%, var(--bg) 48%, #07040d 100%);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+
+    header,
+    main,
+    footer {
+      width: min(1080px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 72px 0 38px;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--accent);
+      font-size: 0.86rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 800px;
+      font-size: clamp(2.4rem, 8vw, 5.5rem);
+      line-height: 0.96;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 720px;
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: clamp(1.06rem, 2.6vw, 1.35rem);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: 8px;
+      color: var(--text);
+      background: var(--panel-strong);
+      text-decoration: none;
+      font-weight: 750;
+    }
+
+    .button.primary {
+      border-color: rgba(242, 139, 46, 0.9);
+      background: linear-gradient(180deg, #f8a14b, #df6f16);
+      color: #fff;
+    }
+
+    section {
+      padding: 34px 0;
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-size: clamp(1.6rem, 4vw, 2.3rem);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .feature {
+      min-height: 144px;
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .feature strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #ffffff;
+      font-size: 1.05rem;
+    }
+
+    .feature p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      counter-reset: steps;
+    }
+
+    .step {
+      padding: 18px;
+      border-radius: 8px;
+      background: rgba(242, 139, 46, 0.13);
+      border: 1px solid rgba(242, 139, 46, 0.26);
+    }
+
+    .step::before {
+      counter-increment: steps;
+      content: counter(steps);
+      display: inline-grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      margin-bottom: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 800;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .screens {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      align-items: start;
+    }
+
+    .screens img {
+      display: block;
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.42);
+    }
+
+    footer {
+      padding: 36px 0 54px;
+      color: rgba(255, 255, 255, 0.62);
+      font-size: 0.95rem;
+    }
+
+    footer a {
+      color: #fff;
+    }
+
+    @media (max-width: 820px) {
+      .grid,
+      .steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .screens {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 520px) {
+      header {
+        padding-top: 52px;
+      }
+
+      .grid,
+      .steps,
+      .screens {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">Solo 90-ball bingo</p>
+    <h1>Bingo 90 Number Generator</h1>
+    <p class="lead">Draw balls, mark your card, and complete clever bingo targets in a focused offline challenge game.</p>
+    <div class="actions">
+      <a class="button primary" href="#screenshots">View Screenshots</a>
+      <a class="button" href="privacy.html">Privacy Policy</a>
+    </div>
+  </header>
+
+  <main>
+    <section aria-labelledby="features-title">
+      <h2 id="features-title">Game Features</h2>
+      <div class="grid">
+        <article class="feature">
+          <strong>Classic 90-ball draw</strong>
+          <p>Tap to draw one number at a time and follow the action on a clear bingo card.</p>
+        </article>
+        <article class="feature">
+          <strong>50 solo levels</strong>
+          <p>Play compact challenges designed for quick sessions and repeat attempts.</p>
+        </article>
+        <article class="feature">
+          <strong>Varied targets</strong>
+          <p>Complete rows, corners, outer frames, X patterns, full cards, combo goals, and timed objectives.</p>
+        </article>
+        <article class="feature">
+          <strong>Lucky Draw energy</strong>
+          <p>Build energy as you play and use Lucky Draw for stronger moments during a run.</p>
+        </article>
+        <article class="feature">
+          <strong>Offline progress</strong>
+          <p>Your level progress and settings are stored on your device for simple offline play.</p>
+        </article>
+        <article class="feature">
+          <strong>Bright bingo style</strong>
+          <p>Colorful balls, crisp card states, and clear controls keep every draw easy to read.</p>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="how-title">
+      <h2 id="how-title">How To Play</h2>
+      <div class="steps">
+        <div class="step">
+          <p>Start a level and read the target at the top of the screen.</p>
+        </div>
+        <div class="step">
+          <p>Tap Draw to reveal the next bingo number.</p>
+        </div>
+        <div class="step">
+          <p>Matching numbers are marked on your card automatically.</p>
+        </div>
+        <div class="step">
+          <p>Complete the target before your draw, miss, or time limit runs out.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="screenshots" aria-labelledby="screens-title">
+      <h2 id="screens-title">Screenshots</h2>
+      <div class="screens">
+        <img src="AppStorePackage/screenshots/iphone_6_9_1320x2868/01_IMG_0153_1320x2868.png" alt="Bingo 90 Number Generator main menu">
+        <img src="AppStorePackage/screenshots/iphone_6_9_1320x2868/02_IMG_0154_1320x2868.png" alt="Bingo challenge card with draw controls">
+        <img src="AppStorePackage/screenshots/iphone_6_9_1320x2868/03_IMG_0155_1320x2868.png" alt="Bingo gameplay with marked card spaces">
+        <img src="AppStorePackage/screenshots/iphone_6_9_1320x2868/04_IMG_0156_1320x2868.png" alt="Bingo result or level progress screen">
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Copyright (c) 2026 zzbzzb. All rights reserved. <a href="privacy.html">Privacy Policy</a></p>
+  </footer>
+</body>
+</html>
